@@ -1,0 +1,11 @@
+services:
+  digital-dragon:
+    build: .
+    container_name: digital-dragon
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./pet_state.json:/app/pet_state.json
