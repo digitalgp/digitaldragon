@@ -14,7 +14,6 @@ Digital Dragon is a local digital pet that grows from SABnzbd network activity. 
 python app.py
 ```
 
-
 Then open:
 
 ```text
@@ -27,6 +26,12 @@ http://127.0.0.1:5055
 - Current download speed gently feeds the appetite meter.
 - Milestones unlock at 1 GB, 10 GB, 50 GB, 100 GB, 250 GB, and 500 GB.
 - `pet_state.json` stores the most recent lifetime total so the pet can keep growing over time.
+
+## Data Refresh
+
+- The dashboard fetches fresh data as soon as the page opens.
+- It automatically refreshes every 30 seconds.
+- You can also fetch new data manually with the **Refresh** button.
 
 ## SABnzbd Notes
 
