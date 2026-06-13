@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>digital-dragon</Name>
-  <Repository>digital-dragon:latest</Repository>
-  <Registry/>
+  <Repository>ghcr.io/digitalgp/digitaldragon:latest</Repository>
+  <Registry>https://ghcr.io</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
+  <Support>https://github.com/digitalgp/digitaldragon/issues</Support>
+  <Project>https://github.com/digitalgp/digitaldragon</Project>
   <Overview>Digital Dragon is a local digital pet dashboard that grows from SABnzbd network and download activity.</Overview>
   <Category>Tools: Network: Other:</Category>
   <WebUI>http://[IP]:[PORT:5055]/</WebUI>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/digitalgp/digitaldragon/main/unraid-template-digital-dragon.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
