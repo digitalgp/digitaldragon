@@ -22,10 +22,11 @@
   <DonateLink/>
   <Requires/>
   <Config Name="WebUI Port" Target="5055" Default="5055" Mode="tcp" Description="Port used to access the Digital Dragon dashboard." Type="Port" Display="always" Required="true" Mask="false">5055</Config>
-  <Config Name="Pet State File" Target="/app/pet_state.json" Default="/mnt/user/appdata/digital-dragon/pet_state.json" Mode="rw" Description="Persistent pet growth state file. Create this file before starting the container." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/digital-dragon/pet_state.json</Config>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/digital-dragon" Mode="rw" Description="Persistent config folder. Digital Dragon stores pet_state.json here." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/digital-dragon</Config>
   <Config Name="SABnzbd URL" Target="SABNZBD_URL" Default="http://192.168.10.20:8188" Mode="" Description="Base URL for your SABnzbd instance, reachable from the Unraid server." Type="Variable" Display="always" Required="true" Mask="false">http://192.168.10.20:8188</Config>
   <Config Name="SABnzbd API Key" Target="SABNZBD_API_KEY" Default="" Mode="" Description="Your SABnzbd API key. Find it in SABnzbd settings." Type="Variable" Display="always" Required="true" Mask="true"></Config>
   <Config Name="Demo Mode" Target="DEMO_MODE" Default="false" Mode="" Description="Set to true to run with demo data instead of live SABnzbd data." Type="Variable" Display="advanced" Required="true" Mask="false">false</Config>
   <Config Name="Bind Host" Target="HOST" Default="0.0.0.0" Mode="" Description="Keep this as 0.0.0.0 inside Docker so the WebUI is reachable." Type="Variable" Display="advanced" Required="true" Mask="false">0.0.0.0</Config>
   <Config Name="Internal Port" Target="PORT" Default="5055" Mode="" Description="Internal app port. Keep this aligned with the container port unless you know you need to change it." Type="Variable" Display="advanced" Required="true" Mask="false">5055</Config>
+  <Config Name="Pet State Path" Target="PET_STATE_PATH" Default="/config/pet_state.json" Mode="" Description="Path inside the container where growth state is stored." Type="Variable" Display="advanced" Required="true" Mask="false">/config/pet_state.json</Config>
 </Container>
