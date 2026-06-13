@@ -16,7 +16,16 @@ from urllib.request import urlopen
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
 ENV_PATH = ROOT / ".env"
-STATE_PATH = ROOT / "pet_state.json"
+
+
+def state_path() -> Path:
+    configured = os.environ.get("PET_STATE_PATH")
+    if not configured and "CONFIG" in globals():
+        configured = CONFIG.get("PET_STATE_PATH")
+    path = Path(configured) if configured else ROOT / "pet_state.json"
+    if path.exists() and path.is_dir():
+        return path / "pet_state.json"
+    return path
 
 
 def load_env(path: Path = ENV_PATH) -> dict[str, str]:
@@ -46,16 +55,19 @@ def bool_config(name: str, default: bool = False) -> bool:
 
 
 def load_state() -> dict[str, Any]:
-    if not STATE_PATH.exists():
+    path = state_path()
+    if not path.exists():
         return {"last_total_gb": 0, "hatched_at": datetime.now().isoformat()}
     try:
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         return {"last_total_gb": 0, "hatched_at": datetime.now().isoformat()}
 
 
 def save_state(state: dict[str, Any]) -> None:
-    STATE_PATH.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    path = state_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 
 def sabnzbd_api(mode: str, **params: str) -> dict[str, Any]:
