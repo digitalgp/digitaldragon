@@ -52,20 +52,20 @@ SABNZBD_API_KEY=your-real-sabnzbd-api-key
 DEMO_MODE=false
 HOST=0.0.0.0
 PORT=5055
+PET_STATE_PATH=/config/pet_state.json
 ```
 
 Important: `HOST=0.0.0.0` is required inside Docker so the dashboard can be reached from other devices on your network.
 
-## 3. Create the Pet State File
+## 3. Create the Config Folder
 
-Create an empty state file so Docker can mount it as a file:
+Create the persistent config folder:
 
 ```bash
-touch /mnt/user/appdata/digital-dragon/pet_state.json
-echo '{"last_total_gb":0}' > /mnt/user/appdata/digital-dragon/pet_state.json
+mkdir -p /mnt/user/appdata/digital-dragon
 ```
 
-This file keeps the dragon's growth between container restarts.
+Digital Dragon mounts this folder as `/config` and stores `pet_state.json` there automatically. This keeps the dragon's growth between container restarts.
 
 ## 4. Install with Compose Manager
 
@@ -126,7 +126,7 @@ cd /mnt/user/appdata/digital-dragon
 docker compose up -d --build
 ```
 
-The `pet_state.json` file should remain in place so the dragon keeps its progress.
+The `pet_state.json` file in `/mnt/user/appdata/digital-dragon` should remain in place so the dragon keeps its progress.
 
 ## 7. Troubleshooting
 
@@ -150,6 +150,7 @@ docker ps | grep digital-dragon
 
 - Confirm port `5055` is not already used by another container.
 - Confirm `HOST=0.0.0.0` in `.env`.
+- Confirm the Unraid template maps `/mnt/user/appdata/digital-dragon` to container path `/config`.
 - Check logs:
 
 ```bash
@@ -196,7 +197,8 @@ Then open the Unraid web UI:
 2. Click **Add Container**.
 3. Choose `digital-dragon` from the template dropdown.
 4. Set the SABnzbd API key.
-5. Apply the template.
+5. Confirm the config path maps to `/config`.
+6. Apply the template.
 
 The XML template points directly to this Docker image:
 
