@@ -8,4 +8,4 @@ services:
     ports:
       - "5055:5055"
     volumes:
-      - ./pet_state.json:/app/pet_state.json
+      - ./config:/config
