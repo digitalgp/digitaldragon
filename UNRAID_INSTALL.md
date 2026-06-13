@@ -198,11 +198,15 @@ Then open the Unraid web UI:
 4. Set the SABnzbd API key.
 5. Apply the template.
 
-Important: this XML template assumes an image named `digital-dragon:latest` already exists on the Unraid server. Build it first:
+The XML template points directly to this Docker image:
+
+```text
+ghcr.io/digitalgp/digitaldragon:latest
+```
+
+The template also points back to the GitHub project, issue tracker, and raw template URL. If the image has not been published yet, build it locally as a temporary workaround:
 
 ```bash
 cd /mnt/user/appdata/digital-dragon
-docker build -t digital-dragon:latest .
+docker build -t ghcr.io/digitalgp/digitaldragon:latest .
 ```
-
-The XML template is best treated as a ready-to-copy starting point for a local/private Unraid install. If you later publish this as a Community Applications template, update the `<Repository>`, `<Registry>`, `<TemplateURL>`, `<Icon>`, `<Support>`, and `<Project>` fields with real public URLs.
