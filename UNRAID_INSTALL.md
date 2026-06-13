@@ -163,7 +163,11 @@ If SABnzbd is running in another Docker container on the same Unraid host, using
 SABNZBD_URL=http://192.168.10.20:8188
 ```
 
-## 8. Optional: Run in Demo Mode
+## 8. Data Refresh
+
+The dashboard fetches fresh data as soon as the page opens. It then refreshes automatically every 30 seconds. You can also fetch new data manually with the **Refresh** button.
+
+## 9. Optional: Run in Demo Mode
 
 To test the UI without SABnzbd:
 
@@ -177,7 +181,7 @@ Restart the container:
 docker restart digital-dragon
 ```
 
-## 9. Optional: Unraid XML Template
+## 10. Optional: Unraid XML Template
 
 This project includes a suggested Unraid Docker XML template:
 
