@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Digital Dragon</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">DD</div>
+          <div>
+            <h1>Digital Dragon</h1>
+            <p>Network-fed companion</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="mode-switch" role="group" aria-label="Data source">
+            <span id="livePill" class="pill active"><span></span>Live SABnzbd</span>
+            <span id="demoPill" class="pill">Demo mode</span>
+          </div>
+          <button id="refreshButton" type="button">Refresh</button>
+        </div>
+      </header>
+
+      <section id="statusBanner" class="status-banner">
+        <div class="status-check" aria-hidden="true">&check;</div>
+        <div>
+          <strong id="statusTitle">Connecting to SABnzbd</strong>
+          <p id="statusMessage">Waking the dragon.</p>
+        </div>
+        <div class="signal" aria-hidden="true"><i></i><i></i><i></i></div>
+      </section>
+
+      <section class="dashboard">
+        <div class="left-column">
+          <section class="habitat" aria-labelledby="growthTitle">
+            <div class="growth-card">
+              <div class="level-badge"><span id="levelValue">1</span></div>
+              <div>
+                <span class="label">Growth</span>
+                <h2 id="growthTitle">Hatchling</h2>
+              </div>
+              <div class="xp-track" aria-label="Growth progress">
+                <div id="xpFill"></div>
+              </div>
+              <span id="xpValue" class="xp-value">0 / 1,000 XP</span>
+            </div>
+
+            <div class="room">
+              <div class="window"></div>
+              <div class="plant plant-left"></div>
+              <div class="plant plant-right"></div>
+              <div class="crystal"></div>
+              <div class="egg"></div>
+              <div id="dragon" class="dragon" aria-label="Digital Dragon pet">
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="tail"></div>
+                <div class="body"></div>
+                <div class="belly"></div>
+                <div class="head">
+                  <span class="horn horn-left"></span>
+                  <span class="horn horn-right"></span>
+                  <span class="eye eye-left"></span>
+                  <span class="eye eye-right"></span>
+                  <span class="snout"></span>
+                </div>
+                <div class="leg leg-left"></div>
+                <div class="leg leg-right"></div>
+              </div>
+              <div class="platform"></div>
+            </div>
+          </section>
+
+          <section class="milestones">
+            <div class="section-title">
+              <span aria-hidden="true">&#9734;</span>
+              <h2>Milestones</h2>
+            </div>
+            <div id="milestoneRail" class="milestone-rail"></div>
+          </section>
+        </div>
+
+        <aside class="side-column" aria-label="SABnzbd pet stats">
+          <section class="stats-panel">
+            <article class="stat-row">
+              <div class="stat-icon download">&darr;</div>
+              <div>
+                <span>Downloaded today</span>
+                <strong id="todayValue">0 GB</strong>
+                <small id="gainValue">+0 GB</small>
+              </div>
+            </article>
+            <article class="stat-row">
+              <div class="stat-icon queue">&equiv;</div>
+              <div>
+                <span>Queue</span>
+                <strong id="queueValue">0</strong>
+                <small id="queueSizeValue">0 GB</small>
+              </div>
+            </article>
+            <article class="stat-row">
+              <div class="stat-icon speed">&#8599;</div>
+              <div>
+                <span>Speed</span>
+                <strong id="speedValue">0 MB/s</strong>
+                <small>current feed rate</small>
+              </div>
+            </article>
+          </section>
+
+          <section class="appetite-panel">
+            <div class="panel-head">
+              <h2>Appetite</h2>
+              <strong id="moodValue">Curious</strong>
+            </div>
+            <div id="appetiteBars" class="appetite-bars" aria-label="Appetite meter"></div>
+            <p id="appetiteCopy">Keep the downloads flowing.</p>
+          </section>
+
+          <section class="connection-panel">
+            <div class="panel-head">
+              <h2>Connection</h2>
+              <span id="onlineBadge" class="online-badge">Checking</span>
+            </div>
+            <dl>
+              <div>
+                <dt>SABnzbd URL</dt>
+                <dd id="urlValue">-</dd>
+              </div>
+              <div>
+                <dt>API key</dt>
+                <dd id="keyValue">-</dd>
+              </div>
+              <div>
+                <dt>Backend</dt>
+                <dd>http://127.0.0.1:5055</dd>
+              </div>
+              <div>
+                <dt>Last checked</dt>
+                <dd id="checkedValue">-</dd>
+              </div>
+            </dl>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
