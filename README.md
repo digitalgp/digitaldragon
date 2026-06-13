@@ -14,11 +14,6 @@ Digital Dragon is a local digital pet that grows from SABnzbd network activity. 
 python app.py
 ```
 
-If Windows says `python` is not recognized, this bundled Codex runtime worked in this workspace:
-
-```powershell
-& "C:\Users\Glenn\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" app.py
-```
 
 Then open:
 
